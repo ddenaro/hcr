@@ -13,5 +13,6 @@ The notebook is divided in 4 parts:
 2. Database setup - Setup the dataset selecting digits and capital letters only
 3. CNN Training - Setup the model and start the training ( remember to change the runtime type to GPU accellerated )
 4. Evaluate and generate a confusion matrix - Evaluate the accuracy of the trained network and generate a confusion matrix
+![Confusion matrix](https://github.com/ddenaro/hcr/blob/master/raw/emnist_confusion.png)
 
 
