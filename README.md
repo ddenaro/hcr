@@ -39,7 +39,19 @@ Install the STM32CubeMX and then:
 ### Step 3 - Application integration
 The NN landing to the edge is almost done. It's time to integrate the AI into your application.
 In this repository you can find the complete application for the handwritten character recognition.
-You can use the [SW4STM32](https://www.st.com/en/development-tools/sw4stm32.html) free ide to compile and debug the project.
+You can use the [SW4STM32](https://www.st.com/en/development-tools/sw4stm32.html) free ide to compile and debug the project.\
+The Cube.AI has traslated the NN into a static library driven by a couple of API. Using this interface is very simple, first of all you have to allocate some RAM for the input tensor ( your input buffer ), the output sensor ( the output buffer for instance the result of the softmax layer ) and the activation memory ( the memory used to run an inference ).\
+Then you have to initialize the NN engine:\
+'''
+    ai_hcr_nn_create(&g_hcr_network,(const ai_buffer*)AI_HCR_NN_DATA_CONFIG);
+    ai_network_params net_params = AI_NETWORK_PARAMS_INIT(
+                                   AI_HCR_NN_DATA_WEIGHTS(ai_hcr_nn_data_weights_get()),
+                                   AI_HCR_NN_DATA_ACTIVATIONS(g_net_activations));
+    ai_hcr_nn_init(g_hcr_network,&net_params);
+ '''
+ The code below initilizes the network handle g_hcr_network with the NN weights and the activation memory.\
+ 
+
 
 
 
