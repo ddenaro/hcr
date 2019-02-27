@@ -31,6 +31,13 @@ Install the STM32CubeMX and then:
     - Then press the Analyze button
 7. The model analysis shows you some useful information about:
     - Computation cost (Complexity) in [MACC](https://en.wikipedia.org/wiki/Multiply%E2%80%93accumulate_operation)
+    - Flash occupation for the network weights
+    - RAM required to run the network
+8. For the code generation use the Project Manager panel to select the SW4STM32 toolchain and press the GENERATE CODE button
+9. In the destination directory the AI folder under Middlewares > ST contains your NN traslated in C code
+
+### Step 3 - Use the library into your application
+
 
 
 
