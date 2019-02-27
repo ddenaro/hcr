@@ -41,7 +41,7 @@ The NN landing to the edge is almost done. It's time to integrate the AI into yo
 In this repository you can find the complete application for the handwritten character recognition.
 You can use the [SW4STM32](https://www.st.com/en/development-tools/sw4stm32.html) free ide to compile and debug the project.\
 The Cube.AI has traslated the NN into a static library driven by a couple of API. Using this interface is very simple, first of all you have to allocate some RAM for the input tensor ( your input buffer ), the output sensor ( the output buffer for instance the result of the softmax layer ) and the activation memory ( the memory used to run an inference ).\
-Then you have to initialize the NN engine:\
+Then you have to initialize the NN engine:
 ```C
     ai_hcr_nn_create(&g_hcr_network,(const ai_buffer*)AI_HCR_NN_DATA_CONFIG);
     ai_network_params net_params = AI_NETWORK_PARAMS_INIT(
@@ -49,8 +49,12 @@ Then you have to initialize the NN engine:\
                                    AI_HCR_NN_DATA_ACTIVATIONS(g_net_activations));
     ai_hcr_nn_init(g_hcr_network,&net_params);
  ```
- The code below initilizes the network handle g_hcr_network with the NN weights and the activation memory.\
- 
+ The code below initializes the network handle g_hcr_network with the NN weights and the activation memory.
+ To run an inference simply call:
+ ```C
+ ai_hcr_nn_run(g_hcr_network, &g_net_in[0], &g_net_out[0]);
+ ```
+ Where g_net_in and g_net_out are the input and output tensors.
 
 
 
