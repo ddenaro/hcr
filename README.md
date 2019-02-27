@@ -24,13 +24,13 @@ Install the STM32CubeMX and then:
 4. Expand Additional software from the configuration tree and select the Cube.AI
 5. Enable Artificial Intelligence Core check box, this enable the tool
 6. Now use the configuration panel to insert your NN
-  - Name = hcr_nn
-  - Model kind = Keras
-  - Select saved model as model format
-  - Use the browse button to insert the model filename
-  - Then press the Analyze button
+    - Name = hcr_nn
+    - Model kind = Keras
+    - Select saved model as model format
+    - Use the browse button to insert the model filename
+    - Then press the Analyze button
 7. The model analysis shows you some useful information about:
-  - Computation cost (Complexity) in [MACC](https://en.wikipedia.org/wiki/Multiply%E2%80%93accumulate_operation)
+    - Computation cost (Complexity) in [MACC](https://en.wikipedia.org/wiki/Multiply%E2%80%93accumulate_operation)
 
 
 
