@@ -54,7 +54,8 @@ Then you have to initialize the NN engine:
  ```C
  ai_hcr_nn_run(g_hcr_network, &g_net_in[0], &g_net_out[0]);
  ```
- Where g_net_in and g_net_out are the input and output tensors.
+ Where g_net_in and g_net_out are the input and output tensors.\
+ 
 
 
 
