@@ -15,4 +15,17 @@ The notebook is divided in 4 parts:
 4. Evaluate and generate a confusion matrix - Evaluate the accuracy of the trained network and generate a confusion matrix
 ![Confusion matrix](https://github.com/ddenaro/hcr/blob/master/raw/emnist_confusion.png)
 
+### Step 2 - Deploy your neural network
+Deploy a neural network to an MCU it's not a trivial task. During the NN design you have used a Deep Learning library running on your desktop or in the cloud, now it's time to move on the edge. In order to traslate your trained NN in an STM32 code we leveranging a tool made by ST the [STM32CubeMX with the Cube.AI extension](https://www.st.com/en/embedded-software/x-cube-ai.html).\
+Install the STM32CubeMX and then:
+1. Create a new Board project for the STM32L496G Discovery board
+2. Initialize all peripherals with their defaults mode
+3. Press the Additional softwares button and select the Cube.AI/Core pack, press OK and the package is added to the project
+4. Expand Additional software from the configuration tree and select the Cube.AI
+5. Enable Artificial Intelligence Core check box, this enable the tool
+6. The configuration panel
+
+
+
+
 
