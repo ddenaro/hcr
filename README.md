@@ -36,7 +36,11 @@ Install the STM32CubeMX and then:
 8. For the code generation use the Project Manager panel to select the SW4STM32 toolchain and press the GENERATE CODE button
 9. In the destination directory the AI folder under Middlewares > ST contains your NN traslated in C code
 
-### Step 3 - Use the library into your application
+### Step 3 - Application integration
+The NN landing to the edge is almost done. It's time to integrate the AI into your application.
+In this repository you can find the complete application for the handwritten character recognition.
+You can use the [SW4STM32](https://www.st.com/en/development-tools/sw4stm32.html) free ide to compile and debug the project.
+
 
 
 
