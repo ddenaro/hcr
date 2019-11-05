@@ -20,7 +20,7 @@ int main(void)
   HAL_Init();
   SystemClock_Config();
 
-  g_uart_handle.Init.BaudRate = 9600;
+  g_uart_handle.Init.BaudRate = 115200;
   g_uart_handle.Init.WordLength = UART_WORDLENGTH_8B;
   g_uart_handle.Init.StopBits = UART_STOPBITS_1;
   g_uart_handle.Init.Parity = UART_PARITY_NONE;

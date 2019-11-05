@@ -17,14 +17,15 @@
 #include "chat565.bmp.h"
 #include "play565.bmp.h"
 
-#include "hcr_nn.h"
-#include "hcr_nn_data.h"
+#include "hcr_float.h"
+#include "hcr_float_data.h"
+
 static ai_handle g_hcr_network = AI_HANDLE_NULL;
-static uint8_t g_net_activations[AI_HCR_NN_DATA_ACTIVATIONS_SIZE];
-static float g_ai_output[AI_HCR_NN_OUT_1_SIZE];
-static float g_ai_input[AI_HCR_NN_IN_1_SIZE];
-static ai_buffer g_net_in[AI_HCR_NN_IN_NUM]  = {AI_HCR_NN_IN_1};
-static ai_buffer g_net_out[AI_HCR_NN_OUT_NUM] = {AI_HCR_NN_OUT_1};
+static uint8_t g_net_activations[AI_HCR_FLOAT_DATA_ACTIVATIONS_SIZE];
+static float g_ai_output[AI_HCR_FLOAT_OUT_1_SIZE];
+static float g_ai_input[AI_HCR_FLOAT_IN_1_SIZE];
+static ai_buffer g_net_in[AI_HCR_FLOAT_IN_NUM]  = AI_HCR_FLOAT_IN;
+static ai_buffer g_net_out[AI_HCR_FLOAT_OUT_NUM] = AI_HCR_FLOAT_OUT;
 static char AI_Process(float *prob,bool digit);
 
 #define PEN_POINT_SIZE 9
@@ -48,9 +49,10 @@ void Application(void)
     memset(g_patch565,0,sizeof(g_patch565));
     __HAL_RCC_CRC_CLK_ENABLE();
 
-    ai_hcr_nn_create(&g_hcr_network,(const ai_buffer*)AI_HCR_NN_DATA_CONFIG);
-    ai_network_params net_params = AI_NETWORK_PARAMS_INIT(AI_HCR_NN_DATA_WEIGHTS(ai_hcr_nn_data_weights_get()),AI_HCR_NN_DATA_ACTIVATIONS(g_net_activations));
-    ai_hcr_nn_init(g_hcr_network,&net_params);
+    ai_hcr_float_create(&g_hcr_network,(const ai_buffer*)AI_HCR_FLOAT_DATA_CONFIG);
+    ai_network_params hcr_net_params = AI_NETWORK_PARAMS_INIT(AI_HCR_FLOAT_DATA_WEIGHTS(ai_hcr_float_data_weights_get()),AI_HCR_FLOAT_DATA_ACTIVATIONS(g_net_activations));
+    ai_hcr_float_init(g_hcr_network,&hcr_net_params);
+
 
     g_net_in[0].data = AI_HANDLE_PTR(g_ai_input);
     g_net_in[0].n_batches = 1;
@@ -235,8 +237,8 @@ char AI_Process(float *prob,bool digit)
   float max = 0.0F;
   int32_t imax = -1;
 
-    ai_hcr_nn_run(g_hcr_network, &g_net_in[0], &g_net_out[0]);
-  	for(int ii=0;ii<AI_HCR_NN_OUT_1_SIZE;ii++)
+  	ai_hcr_float_run(g_hcr_network, &g_net_in[0], &g_net_out[0]);
+  	for(int ii=0;ii<AI_HCR_FLOAT_OUT_1_SIZE;ii++)
   	{
   		if( g_ai_output[ii] > max ) { max = g_ai_output[ii]; imax = ii; }
   	}
