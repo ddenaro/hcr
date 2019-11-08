@@ -1,0 +1,16 @@
+{
+        "model_name": "HCR",
+        "path_to_floatingpoint_h5": "model_EMNIST.h5",
+        "batch_size": "32",
+        "quant_test_set_dir":"",
+        "quant_test_ratio": "0.2",
+        "evaluation_test_set_dir":"",
+        "modules_directory": ".\\",
+        "filename_test_set_generation": "hcr_data_gen.py",
+        "filename_quantizer_algos": "",
+        "algorithm": "MinMax",
+        "output_directory": "output",
+        "arithmetic": "Integer",
+        "weights_integer_scheme": "UnsignedAsymmetric",
+        "activations_integer_scheme": "UnsignedAsymmetric"
+}
